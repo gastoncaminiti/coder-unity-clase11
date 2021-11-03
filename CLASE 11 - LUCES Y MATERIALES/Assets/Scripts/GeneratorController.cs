@@ -11,6 +11,8 @@ public class GeneratorController : MonoBehaviour
     [SerializeField] private Difficulties difficulty;
     [SerializeField] private GameObject[] enemyPrefabs;
 
+    private Material croosMaterial;
+
     void Start()
     {
        switch (difficulty)
@@ -29,6 +31,7 @@ public class GeneratorController : MonoBehaviour
                break;
        }
 
+        croosMaterial = transform.GetChild(0).GetComponent<MeshRenderer>().material;
     }
     void Update()
     {
@@ -38,6 +41,11 @@ public class GeneratorController : MonoBehaviour
     {
         int enemyIndex = Random.Range(0, enemyPrefabs.Length);
         Instantiate(enemyPrefabs[enemyIndex], transform.position, enemyPrefabs[enemyIndex].transform.rotation);
+    }
+
+    public void setNewColor(Color newColor)
+    {
+        croosMaterial.SetColor("_Color", newColor);
     }
 
 }

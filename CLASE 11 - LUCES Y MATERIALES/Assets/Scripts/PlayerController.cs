@@ -84,7 +84,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Generator"))
         {
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            other.gameObject.GetComponent<GeneratorController>().setNewColor(Color.black);
         }
     }
 }
